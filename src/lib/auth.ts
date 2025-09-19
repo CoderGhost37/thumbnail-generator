@@ -33,12 +33,12 @@ export const auth = betterAuth({
       },
     },
     requireEmailVerification: true,
-    sendResetPassword: async ({ user, url, token }) => {
+    sendResetPassword: async ({ user, url }) => {
       await resend.emails.send({
         from: "Cinnavo <onboarding@resend.dev>",
         to: user.email,
         subject: "Reset your password",
-        html: `<p>Click the link to reset your password: <a href="${url}?token=${token}">${url}?token=${token}</a></p><p>This link will expire in 15 minutes.</p>`,
+        html: `<p>Click the link to reset your password: <a href="${url}">${url}</a></p><p>This link will expire in 15 minutes.</p>`,
       });
     },
   },
